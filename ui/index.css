@@ -1,0 +1,19 @@
+body {
+  background: rgb(46, 60, 63);
+  color: rgb(226, 226, 226);
+  padding: 10px;
+}
+
+.buffer {
+  white-space: pre;
+  font-family: monospace;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.caret {
+  height: 12px;
+  width: 2px;
+  background: rgb(226, 226, 226);
+  display: inline-block;
+}
