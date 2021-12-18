@@ -7,10 +7,10 @@ import (
 	"github.com/webview/webview"
 )
 
-func initUI(path string, bd bindData) error {
+func initUI(bd bindData) error {
 	w := webview.New(true)
 	defer w.Destroy()
-	w.SetTitle("Blue Pencil - " + path)
+	w.SetTitle("Blue Pencil - " + bd.path)
 	w.SetSize(800, 600, webview.HintNone)
 	wd, err := os.Getwd()
 	if err != nil {
@@ -18,6 +18,7 @@ func initUI(path string, bd bindData) error {
 	}
 
 	w.Bind("keyDownBind", bd.keyDown)
+	w.Bind("ctrlKeyDownBind", bd.ctrlKeyDown)
 
 	w.Navigate(fmt.Sprintf("file://%v/ui/index.html", wd))
 	w.Run()

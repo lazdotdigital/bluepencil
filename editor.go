@@ -1,6 +1,8 @@
 package main
 
-import "github.com/zyedidia/rope"
+import (
+	"github.com/zyedidia/rope"
+)
 
 type editor struct {
 	buffer *rope.Node
@@ -51,8 +53,4 @@ func (e *editor) delete() {
 	if e.buffer.Len() > 0 {
 		e.buffer.Remove(e.offset, e.offset+1)
 	}
-}
-
-func (e *editor) bufferString() string {
-	return string(e.buffer.Value())
 }

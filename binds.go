@@ -1,6 +1,9 @@
 package main
 
+import "os"
+
 type bindData struct {
+	path string
 	*editor
 }
 
@@ -33,6 +36,14 @@ func (bd bindData) keyDown(key string) keyDownResult {
 	}
 	return keyDownResult{
 		Offset:       bd.offset,
-		BufferString: bd.bufferString(),
+		BufferString: string(bd.buffer.Value()),
 	}
+}
+
+func (bd bindData) ctrlKeyDown(key string) error {
+	switch key {
+	case "s":
+		return os.WriteFile(bd.path, bd.buffer.Value(), 0777)
+	}
+	return nil
 }

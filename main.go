@@ -2,6 +2,8 @@ package main
 
 import (
 	"log"
+
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func main() {
@@ -10,7 +12,8 @@ func main() {
 		log.Fatalf("couldn't read file from args: %v", err)
 	}
 	bd := bindData{
-		newEditor(b),
+		editor: newEditor(b),
+		path:   path,
 	}
-	initUI(path, bd)
+	initUI(bd)
 }
