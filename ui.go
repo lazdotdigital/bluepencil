@@ -19,6 +19,7 @@ func initUI(bd bindData) error {
 
 	w.Bind("keyDownBind", bd.keyDown)
 	w.Bind("ctrlKeyDownBind", bd.ctrlKeyDown)
+	w.Bind("getBufferStringBind", bd.getBufferString)
 
 	w.Navigate(fmt.Sprintf("file://%v/ui/index.html", wd))
 	w.Run()

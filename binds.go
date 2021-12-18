@@ -47,3 +47,7 @@ func (bd bindData) ctrlKeyDown(key string) error {
 	}
 	return nil
 }
+
+func (bd bindData) getBufferString() string {
+	return string(bd.buffer.Value())
+}
