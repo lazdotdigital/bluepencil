@@ -4,6 +4,7 @@ import (
 	"log"
 
 	_ "github.com/joho/godotenv/autoload"
+	"github.com/lazdotdigital/bluepencil/editor"
 )
 
 func main() {
@@ -12,7 +13,7 @@ func main() {
 		log.Fatalf("couldn't read file from args: %v", err)
 	}
 	bd := bindData{
-		editor: newEditor(b),
+		Editor: editor.New(b),
 		path:   path,
 	}
 	initUI(bd)

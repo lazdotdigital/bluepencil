@@ -1,10 +1,14 @@
 package main
 
-import "os"
+import (
+	"os"
+
+	"github.com/lazdotdigital/bluepencil/editor"
+)
 
 type bindData struct {
 	path string
-	*editor
+	*editor.Editor
 }
 
 type keyDownResult struct {
@@ -14,40 +18,40 @@ type keyDownResult struct {
 
 func (bd bindData) keyDown(key string) keyDownResult {
 	if len(key) == 1 {
-		bd.insert(key)
+		bd.Insert(key)
 	} else {
 		switch key {
 		case "ArrowUp":
-			bd.moveUp()
+			bd.MoveUp()
 		case "ArrowDown":
-			bd.moveDown()
+			bd.MoveDown()
 		case "ArrowLeft":
-			bd.moveLeft()
+			bd.MoveLeft()
 		case "ArrowRight":
-			bd.moveRight()
+			bd.MoveRight()
 		case "Backspace":
-			bd.moveLeft()
-			bd.delete()
+			bd.MoveLeft()
+			bd.Delete()
 		case "Enter":
-			bd.insert("\n")
+			bd.Insert("\n")
 		case "Tab":
-			bd.insert("\t")
+			bd.Insert("\t")
 		}
 	}
 	return keyDownResult{
-		Offset:       bd.offset,
-		BufferString: string(bd.buffer.Value()),
+		Offset:       bd.Offset(),
+		BufferString: string(bd.Buffer()),
 	}
 }
 
 func (bd bindData) ctrlKeyDown(key string) error {
 	switch key {
 	case "s":
-		return os.WriteFile(bd.path, bd.buffer.Value(), 0777)
+		return os.WriteFile(bd.path, bd.Buffer(), 0777)
 	}
 	return nil
 }
 
 func (bd bindData) getBufferString() string {
-	return string(bd.buffer.Value())
+	return string(bd.Buffer())
 }
