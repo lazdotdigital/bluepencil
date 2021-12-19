@@ -16,5 +16,7 @@ func main() {
 		Editor: editor.New(b),
 		path:   path,
 	}
-	initUI(bd)
+	if err := initUI(bd); err != nil {
+		log.Fatalf("couldn't initialize web view: %v", err)
+	}
 }
