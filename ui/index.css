@@ -17,3 +17,7 @@ body {
   background: rgb(226, 226, 226);
   display: inline-block;
 }
+
+.line-number {
+  margin-right: 15px;
+}

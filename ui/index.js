@@ -1,13 +1,18 @@
 const buffer = document.querySelector('.buffer');
 
-const renderBufferWithCaret = (offset, bufferString) => {
-  buffer.innerHTML =
+const renderBuffer = (offset, bufferString) => {
+  const withCaret =
     bufferString.substr(0, offset) +
     '<div class="caret"></div>' +
     bufferString.substr(offset);
+
+  buffer.innerHTML = withCaret
+    .split('\n')
+    .map((line, i) => `<span class="line-number">${i}</span>${line}`)
+    .join('\n');
 };
 
-getBufferStringBind().then(s => renderBufferWithCaret(0, s));
+getBufferStringBind().then(s => renderBuffer(0, s));
 
 window.onkeydown = async e => {
   e.preventDefault();
@@ -19,6 +24,6 @@ window.onkeydown = async e => {
     }
   } else {
     const { offset, bufferString } = await keyDownBind(e.key);
-    renderBufferWithCaret(offset, bufferString);
+    renderBuffer(offset, bufferString);
   }
 };
