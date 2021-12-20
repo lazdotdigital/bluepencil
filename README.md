@@ -55,7 +55,7 @@ The following commands are avaliable:
 3. `'moveLeft'` moves the caret up.
 4. `'moveRight'` moves the caret up.
 5. `'delete'` deletes the current character.
-6. `'currentChar'` returns the current character code.
+6. `'currentChar'` returns the current character.
 7. `'insert'` inserts text into the buffer. It has one field, `text`, containing the text to insert.
 
 ### Example Addon
