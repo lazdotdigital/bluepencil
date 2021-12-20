@@ -1,14 +1,17 @@
 package main
 
 import (
+	"log"
 	"os"
 
+	"github.com/lazdotdigital/bluepencil/addon"
 	"github.com/lazdotdigital/bluepencil/editor"
 )
 
 type bindData struct {
 	path string
 	*editor.Editor
+	addons []addon.Addon
 }
 
 type keyDownResult struct {
@@ -36,6 +39,13 @@ func (bd bindData) keyDown(key string) keyDownResult {
 			bd.Insert("\n")
 		case "Tab":
 			bd.Insert("\t")
+		}
+	}
+	for _, a := range bd.addons {
+		if err := a.Fire("keyDown", addon.FunctionArgs{
+			"key": key,
+		}); err != nil {
+			log.Fatalf("error firing keyDown: %v", err)
 		}
 	}
 	return keyDownResult{

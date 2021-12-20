@@ -62,3 +62,7 @@ func (e *Editor) Offset() int {
 func (e *Editor) Buffer() []byte {
 	return e.buffer.Value()
 }
+
+func (e *Editor) CurrentChar() byte {
+	return e.buffer.At(e.offset)
+}
