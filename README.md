@@ -20,15 +20,28 @@ _NOTE: THIS PROJECT IS IN ITS VERY EARLY STAGES. NOT ALL FEATURES ARE COMPLETE, 
 
 Edit your file as desired, then `ctrl+s` to save. The caret is moved via the arrow keys.
 
+# Configuration
+
+Blue Pencil is configured via environment variables. When run, the `.env` file, if present, will be loaded. The following configuration options are currently avaliable:
+
+1. `ADDONS_PATH`
+
 ## Addons
 
 Blue Pencil has a simple and powerful addon system. All addons are written in ES6 compliant JavaScript.
 
 ### Installation
 
-Installing addons is very simple. All files located at the `ADDONS_PATH` environment variable will be loaded and executed. To install one, simply drop it into the directory.
+Installing addons is very simple. All files located at `ADDONS_PATH` loaded and executed. To install one, simply drop it into the directory. There are two default addons, avaliable in the `./addons` directory. `ADDONS_PATH` is set to this by default. They are as follows:
 
-### Writing addons
+1. `close-braces.js` automatically closes curly braces (`{}`), returning your cursor to the middle of them.
+2. `skip-brace.js` automatically skips over `}` if `{` is to the left of it.
+
+### Default Addons
+
+There are two default addons, usable by setting the `ADDONS_PATH` environment variable to `./addons`. I suggest putting the rest of your addons in this directory, too. Feel free to move it if necessary.
+
+### Writing Addons
 
 Currently, addons have the following three functions exposed to them: `log`, `on`, and `execute`.
 
