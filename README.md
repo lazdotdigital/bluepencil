@@ -32,14 +32,14 @@ Blue Pencil has a simple and powerful addon system. All addons are written in ES
 
 ### Installation
 
-Installing addons is very simple. All files located at `ADDONS_PATH` loaded and executed. To install one, simply drop it into the directory. There are two default addons, avaliable in the `./addons` directory. `ADDONS_PATH` is set to this by default. They are as follows:
-
-1. `close-braces.js` automatically closes curly braces (`{}`), returning your cursor to the middle of them.
-2. `skip-brace.js` automatically skips over `}` if `{` is to the left of it.
+Installing addons is very simple. All files located at `ADDONS_PATH` loaded and executed. To install one, simply drop it into the directory.
 
 ### Default Addons
 
-There are two default addons, usable by setting the `ADDONS_PATH` environment variable to `./addons`. I suggest putting the rest of your addons in this directory, too. Feel free to move it if necessary.
+There are two default addons, usable by setting the `ADDONS_PATH` environment variable to `./addons`. I suggest putting the rest of your addons in this directory, too. Feel free to move it if necessary. They are as follows:
+
+1. `close-braces.js` automatically closes curly braces (`{}`), returning your cursor to the middle of them.
+2. `skip-brace.js` automatically skips over `}` if `{` is to the left of it.
 
 ### Writing Addons
 
